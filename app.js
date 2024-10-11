@@ -9,9 +9,17 @@ const addTaskButton = document.getElementById("add-task");
 
 const tasks = loadTasks();
 
+tasks.forEach(task => {
+    addTask(task, taskList);
+})
+
 addTaskButton.addEventListener("click", ()=>{
     const task = newTaskInput.value.trim();
-    tasks.push(task);
-    saveTasks(tasks);
-    clearInput(newTaskInput);
+
+    if (task) {
+        addTask(task, taskList);
+        tasks.push(task);
+        saveTasks(tasks);
+        clearInput(newTaskInput);
+    }
 });
